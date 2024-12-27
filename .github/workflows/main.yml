@@ -14,11 +14,11 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.8'  # O la versión que uses
+          python-version: '3.8.18'  # O la versión que uses
 
       - name: Activate the existing virtual environment
         run: |
-          source Scripts/activate  # Activa el entorno virtual (ajusta la ruta si usas otro nombre para el entorno)
+         .\sart2\Scripts\activate  # Activa el entorno virtual (ajusta la ruta si usas otro nombre para el entorno)
 
       - name: Run Python script
         run: |
