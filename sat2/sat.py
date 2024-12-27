@@ -110,6 +110,8 @@ def send_email():
     gmail_password = os.getenv('GMAIL_PASSWORD')  # Obtiene la contraseña de Gmail desde las variables de entorno
     recipient_email = os.getenv('RECIPIENT_EMAIL') 
      # Tu contraseña o contraseña de aplicación si tienes habilitada la verificación en 2 pasos
+    print(f"Correo del remitente: {gmail_user}")
+    print(f"Correo destinatario: {recipient_email}")
 
     smtp_host = "smtp.gmail.com"
     smtp_port = 587
