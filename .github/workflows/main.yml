@@ -1,10 +1,13 @@
 name: Python CI without Virtual Environment
 
 on:
+  schedule:
+   - cron: '*/5 * * * *'
   push:
     branches:
       - main  # O la rama que estés usando
   workflow_dispatch:  # Esto permite ejecutar el flujo de trabajo manualmente desde la interfaz de GitHub
+
 
 jobs:
   build:
@@ -30,3 +33,7 @@ jobs:
       - name: Run Python script
         run: |
           python sat2/sat.py  # Ejecuta 'script.py' desde la carpeta 'sat'
+        env:
+          GMAIL_USER: ${{ secrets.GMAIL_USER }}  # Usamos el secret GMAIL_USER
+          GMAIL_PASSWORD: ${{ secrets.GMAIL_PASSWORD }}  # Usamos el secret GMAIL_PASSWORD
+          RECIPIENT_EMAIL: ${{ secrets.RECIPIENT_EMAIL }}  #
