@@ -18,7 +18,7 @@ jobs:
 
       - name: Activate the existing virtual environment
         run: |
-          source Scritps/activate  # Activa el entorno virtual (ajusta la ruta si usas otro nombre para el entorno)
+          source Scripts/activate  # Activa el entorno virtual (ajusta la ruta si usas otro nombre para el entorno)
 
       - name: Run Python script
         run: |
