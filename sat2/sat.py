@@ -5,7 +5,10 @@ import time
 from PIL import Image
 import json
 from selenium.webdriver.chrome.options import Options
-
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+import os
 # Configura el navegador en modo headless
 chrome_options = Options()
 chrome_options.add_argument("--headless")  # Activa el modo headless
@@ -101,6 +104,41 @@ def valid(placa):
     
         return True
 
+def send_email():
+    # Configuración del servidor SMTP de Gmail
+    gmail_user = os.getenv('GMAIL_USER')  # Obtiene tu correo de Gmail desde las variables de entorno
+    gmail_password = os.getenv('GMAIL_PASSWORD')  # Obtiene la contraseña de Gmail desde las variables de entorno
+    recipient_email = os.getenv('RECIPIENT_EMAIL') 
+     # Tu contraseña o contraseña de aplicación si tienes habilitada la verificación en 2 pasos
+
+    smtp_host = "smtp.gmail.com"
+    smtp_port = 587
+
+    # Crear el mensaje
+    from_addr = gmail_user
+    to_addr = recipient_email  # Usamos la variable de entorno para el destinatario
+
+    msg = MIMEMultipart()
+    msg['From'] = from_addr
+    msg['To'] = to_addr
+    msg['Subject'] = "Alerta: Error detectado en GitHub Actions"
+
+    body = "¡Se ha producido un error en el flujo de trabajo de GitHub Actions!"
+    msg.attach(MIMEText(body, 'plain'))
+
+    try:
+        # Conectar al servidor SMTP y enviar el correo
+        server = smtplib.SMTP(smtp_host, smtp_port)
+        server.starttls()  # Inicia el cifrado TLS
+        server.login(gmail_user, gmail_password)  # Usa las credenciales del entorno
+        text = msg.as_string()
+        server.sendmail(from_addr, to_addr, text)  # Envía el correo
+        server.quit()
+        print("Correo enviado con éxito.")
+    except Exception as e:
+        print(f"Error al enviar el correo: {e}")
+
+# Llamar a la función para enviar el correo
 
 
 
@@ -124,5 +162,6 @@ for placa in placas:
 if sum(papeletas) ==2:
     print("-------Todos los vehículos tienen paeketas---------") 
 elif sum(papeletas) ==0:
-    print("-----------------no tienen paeketas-----------------------")         
+    print("-----------------no tienen paeketas-----------------------")   
+    send_email()      
 #print(message)
