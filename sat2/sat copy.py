@@ -146,9 +146,10 @@ def send_email(body):
 
 # Use examples:
 placas=["AYD706","AVQ856"]
-papeletas=[0]*2
+
 for placa in placas:
-    for attempt in range(6):
+    found_papeletas = False
+    for attempt in range(8):
         if valid(placa):
             message = browser.find_element(By.ID, 'ctl00_cplPrincipal_lblMensajeVacio')
             if message.text==f'El vehículo de placa {placa} no tiene orden de captura en la provincia de Lima.':
@@ -156,15 +157,12 @@ for placa in placas:
                 
             else:
                 print("Vehículo tiene paeketas")
-                papeletas[placas.index(placa)]=1
+                found_papeletas = True 
             break
-        time.sleep(1)
-    else:
-        print(f"No se pudo encontrar el vehículo de placa {placa} en {attempt} intentos.")
-if sum(papeletas) >0:
-    print("-------Todos los vehículos tienen paeketas---------") 
-    send_email()
-else :
-    print("-----------------no tienen paeketas-----------------------")   
-          
+        time.sleep(2)
+    if found_papeletas:
+        print("-------Todos los vehículos tienen paeketas---------") 
+        send_email()
+        break
+
 #print(message)
