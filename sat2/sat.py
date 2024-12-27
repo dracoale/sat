@@ -160,6 +160,9 @@ for placa in placas:
                 found_papeletas = True 
             break
         time.sleep(2)
+    else:
+        print(f"No se encontró CAPTCHA de  {placa}")
+        
     if found_papeletas:
         print("-------Todos los vehículos tienen paeketas---------") 
         send_email()
