@@ -19,7 +19,7 @@ browser = webdriver.Chrome(options=chrome_options)
 browser.get('https://www.sat.gob.pe/VirtualSAT/modulos/Capturas.aspx')
 
 # Espera 5 segundos
-browser.implicitly_wait(5)
+browser.implicitly_wait(8)
 # Localizar la imagen (puedes usar el selector adecuado para tu imagen)
 captcha_element = browser.find_element(By.CLASS_NAME, 'captcha_class')  # Reemplaza con el XPath o selector de la imagen
 location = captcha_element.location
@@ -64,12 +64,13 @@ def ocr_space_file(filename, overlay=False, api_key='K86916059788957', language=
 
 def valid(placa):
     screenshot = browser.save_screenshot('my_screenshot.png')
+    time.sleep(1)
     screenshot = Image.open('my_screenshot.png')
     captcha_image = screenshot.crop((left, top, right, bottom))
    
     # Guarda la imagen recortada
     captcha_image.save('captcha_image.png')
-    time.sleep(1)
+    time.sleep(2)
     test_file = ocr_space_file(filename='captcha_image.png', language='spa')
 
     response_dict = json.loads(test_file)
@@ -79,7 +80,7 @@ def valid(placa):
 
     # Imprimimos el texto del CAPTCHA extraído
     print("Texto del CAPTCHA:", captcha_text)
-
+    print("Texto del json:", response_dict)
     captcha_input = browser.find_element(By.NAME, 'ctl00$cplPrincipal$txtCaptcha')
     captcha_input.clear() 
     captcha_input.send_keys(captcha_text)
@@ -153,7 +154,7 @@ for placa in placas:
         if valid(placa):
             message = browser.find_element(By.ID, 'ctl00_cplPrincipal_lblMensajeVacio')
             if message.text==f'El vehículo de placa {placa} no tiene orden de captura en la provincia de Lima.':
-                print("Vehículo no tiene paeketas")
+                print(f"Vehículo no tiene paeketas  {placa}")
                 
             else:
                 print("Vehículo tiene paeketas")
