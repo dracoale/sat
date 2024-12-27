@@ -79,7 +79,8 @@ def valid(placa):
     captcha_text = response_dict["ParsedResults"][0]["ParsedText"]
 
     # Imprimimos el texto del CAPTCHA extraído
-    print("Texto del CAPTCHA:", captcha_text)
+    texto_limpio = ''.join([char for char in captcha_text if char.isalnum()])
+    print("Texto del CAPTCHA:", texto_limpio)
     print("Texto del json:", response_dict)
     captcha_input = browser.find_element(By.NAME, 'ctl00$cplPrincipal$txtCaptcha')
     captcha_input.clear() 
@@ -150,7 +151,7 @@ placas=["AYD706","AVQ856"]
 
 for placa in placas:
     found_papeletas = False
-    for attempt in range(8):
+    for attempt in range(10):
         if valid(placa):
             message = browser.find_element(By.ID, 'ctl00_cplPrincipal_lblMensajeVacio')
             if message.text==f'El vehículo de placa {placa} no tiene orden de captura en la provincia de Lima.':
