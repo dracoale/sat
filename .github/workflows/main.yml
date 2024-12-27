@@ -1,25 +1,32 @@
-name: Python CI with Existing Virtualenv
+name: Python CI without Virtual Environment
 
 on:
-  workflow_dispatch: 
+  push:
+    branches:
+      - main  # O la rama que estés usando
+  workflow_dispatch:  # Esto permite ejecutar el flujo de trabajo manualmente desde la interfaz de GitHub
 
 jobs:
   build:
-    runs-on: ubuntu-latest  # Cambia esto si necesitas otro SO
+    runs-on: ubuntu-latest  # El entorno de ejecución será Ubuntu
 
     steps:
+      # 1. Clonar el repositorio
       - name: Check out the repository
         uses: actions/checkout@v2
 
+      # 2. Configurar Python
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.8.18'  # O la versión que uses
+          python-version: '3.8.18'  # Especifica la versión de Python que deseas usar
 
-      - name: Activate the existing virtual environment
+      # 3. Instalar dependencias directamente desde requirements.txt
+      - name: Install dependencies
         run: |
-         source Scripts\activate  # Activa el entorno virtual (ajusta la ruta si usas otro nombre para el entorno)
+          pip install -r sat/requirements.txt  # Instalamos las dependencias de 'requirements.txt'
 
+      # 4. Ejecutar el script de Python
       - name: Run Python script
         run: |
-          python script.py  # Reemplaza 'script.py' por el nombre de tu script
+          python sat/script.py  # Ejecuta 'script.py' desde la carpeta 'sat'
