@@ -1,13 +1,13 @@
 name: Python CI without Virtual Environment
 
 on:
+  schedule:
+   - cron: '*/5 * * * *'
   push:
     branches:
       - main  # O la rama que estés usando
   workflow_dispatch:  # Esto permite ejecutar el flujo de trabajo manualmente desde la interfaz de GitHub
-  schedule:
-    # Este cronograma ejecutará el flujo dos veces al día, a las 00:00 y a las 12:00 UTC
-    - cron: '*/7 * * * *'
+
 
 jobs:
   build:
