@@ -1,7 +1,7 @@
 name: Python CI with Existing Virtualenv
 
 on:
-
+  workflow_dispatch: 
 
 jobs:
   build:
