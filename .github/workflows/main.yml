@@ -1,0 +1,25 @@
+name: Python CI with Existing Virtualenv
+
+on:
+  workflow_dispatch: 
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # Cambia esto si necesitas otro SO
+
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.8.18'  # O la versión que uses
+
+      - name: Activate the existing virtual environment
+        run: |
+         source Scripts\activate  # Activa el entorno virtual (ajusta la ruta si usas otro nombre para el entorno)
+
+      - name: Run Python script
+        run: |
+          python script.py  # Reemplaza 'script.py' por el nombre de tu script
