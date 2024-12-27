@@ -24,9 +24,9 @@ jobs:
       # 3. Instalar dependencias directamente desde requirements.txt
       - name: Install dependencies
         run: |
-          pip install -r sat/requirements.txt  # Instalamos las dependencias de 'requirements.txt'
+          pip install -r sat2/requirements.txt  # Instalamos las dependencias de 'requirements.txt'
 
       # 4. Ejecutar el script de Python
       - name: Run Python script
         run: |
-          python sat/script.py  # Ejecuta 'script.py' desde la carpeta 'sat'
+          python sat2/sat.py  # Ejecuta 'script.py' desde la carpeta 'sat'
