@@ -26,8 +26,8 @@ jobs:
       - name: Cache pip dependencies
         uses: actions/cache@v3
         with:
-          path: '%USERPROFILE%\AppData\Local\pip\Cache'  # Directorio donde pip guarda los paquetes descargados
-          key: ${{ runner.os }}-pip-${{ hashFiles('sat2/requirements.txt') }}  # Identificador único para la caché
+          path: C:\Users\runneradmin\AppData\Local\pip\cache  # Directorio donde pip guarda los paquetes descargados
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}  # Identificador único para la caché
           restore-keys: |
             ${{ runner.os }}-pip
       
