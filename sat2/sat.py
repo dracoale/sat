@@ -151,7 +151,7 @@ placas=["AYD706","AVQ856"]
 
 for placa in placas:
     found_papeletas = False
-    for attempt in range(2):
+    for attempt in range(8):
         if valid(placa):
             message = browser.find_element(By.ID, 'ctl00_cplPrincipal_lblMensajeVacio')
             if message.text==f'El vehículo de placa {placa} no tiene orden de captura en la provincia de Lima.':
