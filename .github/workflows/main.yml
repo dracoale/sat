@@ -2,7 +2,7 @@ name: Python CI without Virtual Environment
 
 on:
   schedule:
-   - cron: '*/400 * * * *'
+   - cron: '0 10,17 * * *'
   push:
     branches:
       - main  # O la rama que estés usando
