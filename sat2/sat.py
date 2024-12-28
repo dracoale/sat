@@ -79,7 +79,7 @@ def valid(placa):
     captcha_text = response_dict["ParsedResults"][0]["ParsedText"]
 
     # Imprimimos el texto del CAPTCHA extraído
-    texto_limpio = ''.join([char for char in captcha_text if char.isalnum()])
+    texto_limpio = ''.join([char for char in captcha_text if (char.isalnum() and char != '-')])
     print("Texto del CAPTCHA:", texto_limpio)
     print("Texto del json:", response_dict)
     captcha_input = browser.find_element(By.NAME, 'ctl00$cplPrincipal$txtCaptcha')
@@ -127,7 +127,7 @@ def send_email(body):
     msg['To'] = to_addr
     msg['Subject'] = "Alerta: Error detectado en GitHub Actions"
 
-    body = "¡Se ha producido un error en el flujo de trabajo de GitHub Actions!"
+    
     msg.attach(MIMEText(body, 'plain'))
 
     try:
@@ -167,8 +167,8 @@ for placa in placas:
         
     if found_papeletas:
         print("-------Todos los vehículos tienen paeketas---------") 
-        send_email()
+        send_email("-------Todos los vehículos tienen paeketas---------")
         break
 
-          
+send_email("-------Todos los vehículos tienen paeketas---------")          
 #print(message)
