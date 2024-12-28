@@ -34,7 +34,6 @@ jobs:
       # 3. Instalar dependencias directamente desde requirements.txt
       - name: Install dependencies
         run: |
-          choco install googlechrome  # Usamos Chocolatey para instalar Google Chrome en Windows
           choco install chromedriver
 
           pip install -r sat2/requirements.txt  # Instalamos las dependencias de 'requirements.txt'
