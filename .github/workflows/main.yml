@@ -28,7 +28,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
-          
+          sudo apt install firefox
           pip install -r sat2/requirements.txt  # Instalamos las dependencias de 'requirements.txt'
 
       # 4. Ejecutar el script de Python
