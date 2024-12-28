@@ -30,7 +30,14 @@ jobs:
           key: ${{ runner.os }}-pip-${{ hashFiles('sat2/requirements.txt') }}  # Identificador único para la caché
           restore-keys: |
             ${{ runner.os }}-pip
-      
+        # 4. Cache Chocolatey installation of chromedriver
+      - name: Cache chromedriver installation
+        uses: actions/cache@v3
+        with:
+          path: C:\ProgramData\chocolatey\lib\chromedriver  # Directorio donde se instala chromedriver
+          key: ${{ runner.os }}-chromedriver-${{ hashFiles('sat2/requirements.txt') }}  # Identificador único para la caché
+          restore-keys: |
+            ${{ runner.os }}-chromedriver
       # 3. Instalar dependencias directamente desde requirements.txt
       - name: Install dependencies
         run: |
