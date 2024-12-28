@@ -28,7 +28,10 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt install firefox
+          apt-get install -y firefox wget python3 python3-pip
+          wget https://github.com/mozilla/geckodriver/releases/download/v0.30.0/geckodriver-v0.30.0-linux64.tar.gz
+          tar -xvzf geckodriver-v0.30.0-linux64.tar.gz
+          mv geckodriver /usr/local/bin/
           pip install -r sat2/requirements.txt  # Instalamos las dependencias de 'requirements.txt'
 
       # 4. Ejecutar el script de Python
