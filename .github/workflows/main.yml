@@ -11,7 +11,7 @@ on:
 
 jobs:
   build:
-    runs-on: windows-2019   # El entorno de ejecución será Ubuntu
+    runs-on: windows-2022   # El entorno de ejecución será Ubuntu
 
     steps:
       # 1. Clonar el repositorio
@@ -22,7 +22,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.8.18'  # Especifica la versión de Python que deseas usar
+          python-version: '3.9'  # Especifica la versión de Python que deseas usar
 
       # 3. Instalar dependencias directamente desde requirements.txt
       - name: Install dependencies
