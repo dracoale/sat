@@ -9,13 +9,14 @@ from selenium.webdriver.chrome.options import Options
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 import os
-# Configura el navegador en modo headless
-chrome_options = Options()
-chrome_options.add_argument("--disable-gpu")  # Desactiva la aceleración de hardware (opcional, solo para algunos casos)
+from selenium.webdriver.firefox.options import Options
 
-chrome_options.add_argument("--no-sandbox")
+# Configurar opciones para Firefox
+options = Options()
+options.headless = True  # Activa el modo headless
 
-browser = webdriver.Chrome(options=chrome_options)
+# Inicializar el navegador Firefox con las opciones configuradas
+browser = webdriver.Firefox(options=options)
 browser.implicitly_wait(8)
 browser.get('https://www.sat.gob.pe/VirtualSAT/modulos/Capturas.aspx')
 
