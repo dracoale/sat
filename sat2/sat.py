@@ -16,11 +16,11 @@ chrome_options.add_argument("--disable-gpu")  # Desactiva la aceleración de har
 chrome_options.add_argument("--no-sandbox")
 
 browser = webdriver.Chrome(options=chrome_options)
-
+browser.implicitly_wait(8)
 browser.get('https://www.sat.gob.pe/VirtualSAT/modulos/Capturas.aspx')
 
 # Espera 5 segundos
-browser.implicitly_wait(8)
+
 # Localizar la imagen (puedes usar el selector adecuado para tu imagen)
 captcha_element = browser.find_element(By.CLASS_NAME, 'captcha_class')  # Reemplaza con el XPath o selector de la imagen
 location = captcha_element.location
