@@ -15,13 +15,14 @@ from webdriver_manager.firefox import GeckoDriverManager
 options = Options()
 options.add_argument("--headless")
 # Especificar la ubicación del ejecutable de Firefox
-options.binary_location = "/usr/bin/firefox"  # O la ruta correspondiente en tu sistema
+#options.binary_location = "/usr/bin/firefox"  # O la ruta correspondiente en tu sistema
 
 # Usar el servicio para especificar la ubicación del geckodriver
 service = Service(GeckoDriverManager().install())  # Esto instala y gestiona geckodriver automáticamente
 
 # Inicializar el navegador Firefox con las opciones configuradas
 driver = webdriver.Firefox(service=service, options=options)
+driver.set_page_load_timeout(180)  # 180 segundos de tiempo de espera
 
 browser.implicitly_wait(8)
 browser.get('https://www.sat.gob.pe/VirtualSAT/modulos/Capturas.aspx')
