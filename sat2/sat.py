@@ -10,7 +10,8 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 import os
 from selenium.webdriver.firefox.options import Options
-
+from selenium.webdriver.firefox.service import Service
+from webdriver_manager.firefox import GeckoDriverManager
 options = Options()
 options.add_argument("--headless")
 # Especificar la ubicación del ejecutable de Firefox
