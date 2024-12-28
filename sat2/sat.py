@@ -170,5 +170,5 @@ for placa in placas:
         send_email("-------Todos los vehículos tienen paeketas---------")
         break
 
-send_email("-------Todos los vehículos tienen paeketas---------")          
+#send_email("-------Todos los vehículos tienen paeketas---------")          
 #print(message)
