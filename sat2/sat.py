@@ -13,10 +13,14 @@ from selenium.webdriver.firefox.options import Options
 
 options = Options()
 options.add_argument("--headless")
-options.binary_location = "/usr/bin/firefox"  # O la ruta correspondiente
+# Especificar la ubicación del ejecutable de Firefox
+options.binary_location = "/usr/bin/firefox"  # O la ruta correspondiente en tu sistema
+
+# Usar el servicio para especificar la ubicación del geckodriver
+service = Service(GeckoDriverManager().install())  # Esto instala y gestiona geckodriver automáticamente
 
 # Inicializar el navegador Firefox con las opciones configuradas
-driver = webdriver.Firefox(options=options, executable_path="/usr/local/bin/geckodriver")
+driver = webdriver.Firefox(service=service, options=options)
 
 browser.implicitly_wait(8)
 browser.get('https://www.sat.gob.pe/VirtualSAT/modulos/Capturas.aspx')
