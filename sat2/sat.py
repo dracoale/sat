@@ -11,13 +11,13 @@ from email.mime.text import MIMEText
 import os
 from selenium.webdriver.firefox.options import Options
 
-# Configurar opciones para Firefox
-driver_path = f"{settings.BASE_DIR}/geckodriver"
+options = Options()
+options.add_argument("--headless")
+options.binary_location = "/usr/bin/firefox"  # O la ruta correspondiente
 
-options = webdriver.FirefoxOptions()
-options.binary_location = "/usr/lib/firefox"
+# Inicializar el navegador Firefox con las opciones configuradas
+driver = webdriver.Firefox(options=options, executable_path="/usr/local/bin/geckodriver")
 
-driver = webdriver.Firefox(service=Service(executable_path=driver_path), options=options)
 browser.implicitly_wait(8)
 browser.get('https://www.sat.gob.pe/VirtualSAT/modulos/Capturas.aspx')
 
