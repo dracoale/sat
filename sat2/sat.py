@@ -12,7 +12,7 @@ import os
 from selenium.webdriver.firefox.options import Options
 chrome_options = Options()
 chrome_options.add_argument("--headless")  # Activa el modo headless
-chrome_options.add_argument("--disable-gpu")  # Desactiva la aceleración de hardware (opcional, solo para algunos casos)
+#chrome_options.add_argument("--disable-gpu")  # Desactiva la aceleración de hardware (opcional, solo para algunos casos)
 chrome_options.add_argument("--no-sandbox")
 browser = webdriver.Chrome(options=chrome_options)
 browser.implicitly_wait(8)
