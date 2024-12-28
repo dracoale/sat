@@ -33,6 +33,8 @@ jobs:
           tar -xvzf geckodriver-v0.30.0-linux64.tar.gz
           mv geckodriver /usr/local/bin/
           pip3 install selenium
+          pip install webdriver-manager
+
           pip install -r sat2/requirements.txt  # Instalamos las dependencias de 'requirements.txt'
 
       # 4. Ejecutar el script de Python
