@@ -12,11 +12,12 @@ import os
 from selenium.webdriver.firefox.options import Options
 
 # Configurar opciones para Firefox
-options = Options()
-options.add_argument("--headless")  # Activa el modo headless
+driver_path = f"{settings.BASE_DIR}/geckodriver"
 
-# Inicializar el navegador Firefox con las opciones configuradas
-browser = webdriver.Firefox(options=options)
+options = webdriver.FirefoxOptions()
+options.binary_location = "/usr/lib/firefox"
+
+driver = webdriver.Firefox(service=Service(executable_path=driver_path), options=options)
 browser.implicitly_wait(8)
 browser.get('https://www.sat.gob.pe/VirtualSAT/modulos/Capturas.aspx')
 
