@@ -20,7 +20,7 @@ options = Options()
 
 options.add_argument("--headless")
 
-options.binary_location = '/usr/bin/firefox' # 180 segundos de tiempo de espera
+options.binary_location = '/snap/bin/firefox' # 180 segundos de tiempo de espera
 
 browser = webdriver.Firefox(options=options)
 browser.implicitly_wait(8)
