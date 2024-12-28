@@ -11,7 +11,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest  # El entorno de ejecución será Ubuntu
+    runs-on: windows-latest   # El entorno de ejecución será Ubuntu
 
     steps:
       # 1. Clonar el repositorio
@@ -27,15 +27,10 @@ jobs:
       # 3. Instalar dependencias directamente desde requirements.txt
       - name: Install dependencies
         run: |
-          sudo apt-get update
-          sudo apt-get install -y firefox wget python3 python3-pip
-          sudo wget https://github.com/mozilla/geckodriver/releases/download/v0.30.0/geckodriver-v0.30.0-linux64.tar.gz
-          tar -xvzf geckodriver-v0.30.0-linux64.tar.gz
-          mv geckodriver /usr/local/bin/
-          pip3 install selenium
-          pip3 install webdriver-manager
+          choco install googlechrome  # Usamos Chocolatey para instalar Google Chrome en Windows
+          choco install chromedriver
 
-          pip3 install -r sat2/requirements.txt  # Instalamos las dependencias de 'requirements.txt'
+          pip install -r sat2/requirements.txt  # Instalamos las dependencias de 'requirements.txt'
 
       # 4. Ejecutar el script de Python
       - name: Run Python script
