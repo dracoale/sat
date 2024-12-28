@@ -15,13 +15,14 @@ from webdriver_manager.firefox import GeckoDriverManager
 
 from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 from selenium.webdriver.firefox.options import Options as FirefoxOptions
-#options = Options()
+options = Options()
 
-options = FirefoxOptions()
+
 options.add_argument("--headless")
-options.binary = FirefoxBinary('/snap/bin/firefox')
-driver = webdriver.Firefox(options=options) # 180 segundos de tiempo de espera
 
+options.binary_location = '/usr/bin/firefox' # 180 segundos de tiempo de espera
+
+browser = webdriver.Firefox(options=options)
 browser.implicitly_wait(8)
 browser.get('https://www.sat.gob.pe/VirtualSAT/modulos/Capturas.aspx')
 
