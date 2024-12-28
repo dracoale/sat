@@ -23,7 +23,14 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: '3.9'  # Especifica la versión de Python que deseas usar
-
+      - name: Cache pip dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pip  # Directorio donde pip guarda los paquetes descargados
+          key: ${{ runner.os }}-pip-${{ hashFiles('sat2/requirements.txt') }}  # Identificador único para la caché
+          restore-keys: |
+            ${{ runner.os }}-pip
+      
       # 3. Instalar dependencias directamente desde requirements.txt
       - name: Install dependencies
         run: |
