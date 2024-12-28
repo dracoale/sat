@@ -10,19 +10,11 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 import os
 from selenium.webdriver.firefox.options import Options
-from selenium.webdriver.firefox.service import Service
-from webdriver_manager.firefox import GeckoDriverManager
-
-from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
-from selenium.webdriver.firefox.options import Options as FirefoxOptions
-options = Options()
-
-
-options.add_argument("--headless")
-
-options.binary_location = '/snap/bin/firefox' # 180 segundos de tiempo de espera
-
-browser = webdriver.Firefox(options=options)
+chrome_options = Options()
+chrome_options.add_argument("--headless")  # Activa el modo headless
+chrome_options.add_argument("--disable-gpu")  # Desactiva la aceleración de hardware (opcional, solo para algunos casos)
+chrome_options.add_argument("--no-sandbox")
+browser = webdriver.Chrome(options=chrome_options)
 browser.implicitly_wait(8)
 browser.get('https://www.sat.gob.pe/VirtualSAT/modulos/Capturas.aspx')
 
