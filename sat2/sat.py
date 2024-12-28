@@ -169,6 +169,6 @@ for placa in placas:
         print("-------Todos los vehículos tienen paeketas---------") 
         send_email()
         break
-
+send_email()
           
 #print(message)
