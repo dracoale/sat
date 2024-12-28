@@ -13,7 +13,7 @@ from selenium.webdriver.firefox.options import Options
 
 # Configurar opciones para Firefox
 options = Options()
-options.headless = True  # Activa el modo headless
+options.add_argument("--headless")  # Activa el modo headless
 
 # Inicializar el navegador Firefox con las opciones configuradas
 browser = webdriver.Firefox(options=options)
