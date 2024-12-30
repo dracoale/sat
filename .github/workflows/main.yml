@@ -2,7 +2,7 @@ name: Python CI without Virtual Environment
 
 on:
   schedule:
-   - cron: '0 10,17 * * *'
+   - cron: '0 9,10,17 * * *'
   push:
     branches:
       - main  # O la rama que estés usando
@@ -53,3 +53,5 @@ jobs:
           GMAIL_USER: ${{ secrets.GMAIL_USER }}  # Usamos el secret GMAIL_USER
           GMAIL_PASSWORD: ${{ secrets.GMAIL_PASSWORD }}  # Usamos el secret GMAIL_PASSWORD
           RECIPIENT_EMAIL: ${{ secrets.RECIPIENT_EMAIL }}  #
+
+              # Estrategia de reintento en caso de fallo       # Tiempo de espera entre intentos
