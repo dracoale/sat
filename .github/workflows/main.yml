@@ -53,5 +53,6 @@ jobs:
           GMAIL_USER: ${{ secrets.GMAIL_USER }}  # Usamos el secret GMAIL_USER
           GMAIL_PASSWORD: ${{ secrets.GMAIL_PASSWORD }}  # Usamos el secret GMAIL_PASSWORD
           RECIPIENT_EMAIL: ${{ secrets.RECIPIENT_EMAIL }}  #
+          MY_SECRET_ARRAY: ${{ secrets.MY_SECRET_ARRAY }}
 
               # Estrategia de reintento en caso de fallo       # Tiempo de espera entre intentos
