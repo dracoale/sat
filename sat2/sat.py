@@ -145,9 +145,12 @@ def send_email(body):
 # Llamar a la función para enviar el correo
 
 
+# Obtener el secreto como cadena
+secret_json = os.getenv('MY_SECRET_ARRAY')
 
+# Convertir la cadena JSON a una lista
+placas = json.loads(secret_json)
 # Use examples:
-placas=["AYD706","AVQ856"]
 
 for placa in placas:
     found_papeletas = False
